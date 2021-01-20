@@ -11,6 +11,7 @@ export class GridComponent {
   @Input() activeCell?: SudokuCell;
   @Input() showAnswer: boolean;
   @Output() activeCellChange = new EventEmitter<SudokuCell>();
+  Math = Math;
 
   onFieldClick(field: SudokuCell): void {
     this.activeCell = this.activeCell === field ? undefined : field;

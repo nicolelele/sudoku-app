@@ -20,10 +20,14 @@
     color: $grey-dark;
   }
 
-  &.highlight-row,
-  &.highlight-col,
-  &.highlight-same {
-    background: $grey-highlight;
+  &.highlight {
+
+    &--row,
+    &--col,
+    &--samevalue,
+    &--samesquare {
+      background: $grey-highlight;
+    }
   }
 
   &.active {
