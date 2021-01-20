@@ -8,9 +8,9 @@
   <div mat-dialog-content>
     <div class="app-dialog__dragdrop">
       <div>
-        <div class="app-dialog__dragdrop--dropzone" appFileDragDrop (filesChangeEmiter)="fileChange($event)">
+        <div class="app-dialog__dragdrop--dropzone" appFileDragDrop (filesChangeEmiter)="fileChange($event)" cdkFocusRegionStart cdkFocusRegionEnd>
           <div class="app-dialog__dragdrop--text">
-              <input type="file" id="file" [multiple]="false" (change)="fileChange($event.target.files)" cdkFocusInitial>
+              <input type="file" id="file" [multiple]="false" (change)="fileChange($event.target.files)" >
               <label for="file">Select your file or drop it here!</label>
             </div>
           </div>
