@@ -1,9 +1,9 @@
 <app-navbar (restart)="newGame()" (resetGrid)="reset()" (difficultyChanged)="changeSetting($event)" (generateCustomGrid)="generateCustom()"></app-navbar>
 <div class="app-container">
-  <div *ngIf="loading">
+  <div *ngIf="!sudoku">
     <app-loading></app-loading>
   </div>
-  <div *ngIf="!loading" class="app-sudoku__wrapper">
+  <div *ngIf="sudoku" class="app-sudoku__wrapper">
     <div class="app-header app-flex">
       <div class="app-col-3 app-difficulty-setting">{{difficulty}}</div>
       <div class="app-col-3 app-timer">{{ elapsedTime | formatTime }}</div>

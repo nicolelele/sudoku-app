@@ -21,21 +21,17 @@ export class AppComponent implements OnInit {
   sudoku: SudokuCell;
   elapsedTime: number;
   solved = false;
-  loading: boolean;
 
   constructor(private sudokuService: SudokuService) { }
 
   ngOnInit(): void {
-    this.loading = true;
     this.generate(this.difficulty);
   }
 
   generate(difficulty: Difficulty): void {
     this.sudoku = undefined;
-    this.loading = true;
     this.sudokuService.generateNewGame(difficulty);
     setTimeout(() => this.sudoku = this.sudokuService.generateNewGame(difficulty), 1000);
-    setTimeout(() => this.loading = false, 1000);
     this.startTimer();
   }
 
@@ -83,15 +79,12 @@ export class AppComponent implements OnInit {
 
   generateCustom() {
     this.sudoku = undefined;
-    this.loading = true;
     setTimeout(() =>
       this.sudokuService.fetchData().toPromise()
         .then(res => {
           const solution = res;
           this.sudoku = this.sudokuService.maskGrid(solution, this.difficulty);
-          this.sudoku ? this.loading = false : this.loading = true;
         }), 1000);
-    setTimeout(() => this.loading = false, 1000);
     this.startTimer();
   }
 }
