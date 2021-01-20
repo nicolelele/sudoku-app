@@ -83,12 +83,15 @@ export class AppComponent implements OnInit {
 
   generateCustom() {
     this.sudoku = undefined;
-
-    this.sudokuService.fetchData().toPromise()
-      .then(res => {
-        const solution = res;
-        this.sudoku = this.sudokuService.maskGrid(solution, this.difficulty);
-        this.sudoku ? this.loading = false : this.loading = true;
-      });
+    this.loading = true;
+    setTimeout(() =>
+      this.sudokuService.fetchData().toPromise()
+        .then(res => {
+          const solution = res;
+          this.sudoku = this.sudokuService.maskGrid(solution, this.difficulty);
+          this.sudoku ? this.loading = false : this.loading = true;
+        }), 1000);
+    setTimeout(() => this.loading = false, 1000);
+    this.startTimer();
   }
 }
