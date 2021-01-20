@@ -1,0 +1,30 @@
+<div class="app-sudoku">
+  <app-grid [sudoku]="sudoku" [(activeCell)]="activeCell" [showAnswer]="showAnswer"></app-grid>
+
+  <div class="app-sudoku__buttons app-flex">
+    <button mat-button (click)="erase()">
+      <svg-icon src="assets/icons/delete.svg"></svg-icon>
+      <div class="app-text">erase</div>
+    </button>
+    <button mat-button [ngClass]="{'active': notesOn}" (click)="toggleNotes()">
+      <svg-icon src="assets/icons/edit.svg"></svg-icon>
+      <div class="app-text">notes</div>
+    </button>
+    <button mat-button (click)="hint()">
+      <svg-icon src="assets/icons/idea.svg"></svg-icon>
+      <div class="app-text">hint</div>
+    </button>
+    <button mat-button [ngClass]="{'active': showAnswer}" (click)="validate()">
+      <svg-icon src="assets/icons/search.svg"></svg-icon>
+      <div class="app-text">check</div>
+    </button>
+  </div>
+
+  <div class="app-sudoku__buttons--digit app-flex" *ngIf="sudoku && activeCell && !activeCell.readonly">
+    <button mat-button *ngFor="let button of controlButtons"
+            [ngClass]="{'disabled': button.disabled}"
+            (click)="write(button.value)">
+      {{ button.value }}
+    </button>
+  </div>
+</div>

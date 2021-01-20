@@ -1,0 +1,141 @@
+@import '_variables.scss';
+
+$prefix: 'app';
+
+.#{$prefix} {
+  margin: 0;
+  color: $grey-dark;
+
+  &-flex {
+    display: flex;
+    align-items: center;
+  }
+
+  &-sudoku__wrapper {
+    max-width: 395px;
+    margin: 0 auto;
+  }
+
+  &-container {
+    background-color: $grey-light;
+    padding: $margin-xs $margin-xl;
+    padding: 0 $margin-xs $margin-xxs;
+    height: calc(100vh - 5rem);
+
+    margin-top: -$margin-m;
+    font-family: $font-default;
+
+    &--blur {
+      opacity: 0.6;
+    }
+  }
+
+  &-header {
+    margin: $margin-xxs 0;
+    align-items: baseline;
+    color: $grey-medium;
+    font-size: $font-s;
+  }
+
+  &-col-3 {
+    width: 33.33%;
+    margin: 0;
+  }
+
+  &-dropdown {
+    position: relative;
+
+    &-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 5.5rem;
+      right: .25rem;
+      background-color: $grey-menu;
+      border-radius: .25rem;
+
+      &--open {
+        display: flex;
+      }
+
+      &-listitem {
+        border: none;
+        background-color: transparent;
+        padding: $margin-xs $margin-m;
+        text-align: right;
+        font-family: 'OpenSans-Regular';
+        outline: none;
+
+        &:hover {
+          color: $blue;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &-difficulty-setting,
+  &-timer {
+    font-family: $font-regular;
+    color: $grey-dark;
+  }
+
+  &-difficulty-setting {
+    text-transform: capitalize;
+  }
+
+  &-timer {
+    text-align: center;
+  }
+
+  &-text-center {
+    text-align: center;
+  }
+
+  &-text {
+    line-height: 1.5;
+    font-family: $font-regular;
+    color: $grey-dark;
+  }
+}
+
+svg-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+button.mat-flat-button,
+button.mat-button {
+  margin: 0 $margin-xxs;
+  padding: $margin-s $margin-xs;
+
+  &:hover,
+  &.active,
+  &:active {
+    svg-icon svg {
+      fill: $blue;
+    }
+  }
+}
+
+h1,
+button {
+  font-family: $font-regular;
+}
+
+hr {
+  border-color: $grey-highlight;
+  border-style: ridge;
+  margin: 0 $margin-m $margin-xs;
+}
+
+.multiline-tooltip {
+  white-space: pre;
+  font-family: monospace;
+}

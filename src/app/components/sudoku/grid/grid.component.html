@@ -1,0 +1,23 @@
+<ng-container *ngFor="let row of sudoku; index as rowIndex">
+  <div class="app-sudoku-cell"
+    *ngFor="let field of row; index as colIndex"
+    [class.top]="rowIndex % 3 === 0"
+    [class.bottom]="rowIndex % 3 === 2"
+    [class.left]="colIndex % 3 === 0"
+    [class.right]="colIndex % 3 === 2"
+    [class.readonly]="field.readonly"
+    [class.highlight-row]="rowIndex === currentRow"
+    [class.highlight-col]="colIndex === currentCol"
+    [class.highlight-same]="activeCell?.value && activeCell?.value === field?.value"
+    [class.active]="field === activeCell"
+    [class.correct]="!field.readonly && field?.value && field.value === field?.answer && showAnswer"
+    [class.incorrect]="!field.readonly && field?.value && field.value !== field?.answer && showAnswer"
+    (click)="onFieldClick(field)">
+  <div class="app-sudoku-cell-value">{{ field.value }}</div>
+    <div *ngIf="!field.value && field.notes?.length > 0">
+      <div class="app-sudoku-cell-notes notes-{{ n }}" *ngFor="let n of field.notes">
+        <div>{{ n }}</div>
+      </div>
+    </div>
+  </div>
+</ng-container>

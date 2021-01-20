@@ -1,0 +1,30 @@
+<div class="app-dialog">
+  <button class="app-dialog__close" mat-flat-button [disableRipple]="true" (click)="closeDialog()">
+    <svg-icon src="assets/icons/delete.svg"></svg-icon>
+  </button>
+  <h1 mat-dialog-title>upload your own json file
+    <svg-icon class="app-dialog__tooltip" #tooltip="matTooltip" [matTooltip]="tooltipText" matTooltipPosition="below" matTooltipClass="multiline-tooltip" src="/assets/icons/question.svg"></svg-icon>
+  </h1>
+  <div mat-dialog-content>
+    <div class="app-dialog__dragdrop">
+      <div>
+        <div class="app-dialog__dragdrop--dropzone" appFileDragDrop (filesChangeEmiter)="fileChange($event)">
+          <div class="app-dialog__dragdrop--text">
+              <input type="file" id="file" [multiple]="false" (change)="fileChange($event.target.files)" cdkFocusInitial>
+              <label for="file">Select your file or drop it here!</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="app-dialog__files">
+        <div class="app-flex app-dialog__files-file" *ngFor="let file of uploadedFiles" (click)="deleteFile(file)">
+          <svg-icon src="/assets/icons/doc.svg"></svg-icon>
+            <span>{{ file.name }}</span>
+        </div>
+    </div>
+    <div class="app-dialog__upload">
+      <button mat-button [mat-dialog-close]="uploadedFiles" (click)=upload() [disabled]="!uploadedFiles">upload</button>
+    </div>
+  </div>
+</div>

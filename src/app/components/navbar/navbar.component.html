@@ -1,0 +1,31 @@
+<div class="app-navbar app-flex">
+  <div class="app-navbar__title">
+    <span>Sudoku</span>
+  </div>
+  <div class="app-navbar__buttons app-flex">
+    <button mat-button (click)="openDialog($event)">
+      <svg-icon src="assets/icons/upload.svg"></svg-icon>
+      <div class="app-text">upload</div>
+    </button>
+    <button mat-button (click)="resetGame()">
+      <svg-icon src="assets/icons/broom.svg"></svg-icon>
+      <div class="app-text">reset</div>
+    </button>
+    <button mat-button (click)="restartGame()">
+      <svg-icon src="assets/icons/restart.svg"></svg-icon>
+      <div class="app-text">new game</div>
+    </button>
+  <div class="app-dropdown" appClickOutside (clickedOutside)="closeDropdown()">
+    <button mat-button (click)="toggleDropdown()">
+      <svg-icon class="app-settings" src="assets/icons/settings.svg"></svg-icon>
+      <div class="app-text app-settings">difficulty</div>
+    </button>
+    <div class="app-dropdown-menu" [ngClass]="{'app-dropdown-menu--open': open}">
+      <button class="app-dropdown-menu-listitem" (click)="changeDifficulty('easy')">Easy</button>
+      <button class="app-dropdown-menu-listitem" (click)="changeDifficulty('medium')">Medium</button>
+      <button class="app-dropdown-menu-listitem" (click)="changeDifficulty('hard')">Hard</button>
+      <button class="app-dropdown-menu-listitem" (click)="changeDifficulty('expert')">Expert</button>
+    </div>
+  </div>
+</div>
+</div>

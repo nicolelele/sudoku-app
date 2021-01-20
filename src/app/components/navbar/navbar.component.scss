@@ -1,0 +1,38 @@
+@import 'src/scss/variables';
+
+.app-navbar {
+  justify-content: space-between;
+  background-color: $grey-light;
+  padding-right: $margin-xs;
+  height: 5.5rem;
+
+  &__title {
+    align-self: flex-start;
+    font-family: $font-default;
+    font-size: $font-l;
+    padding: $margin-xl;
+  }
+
+  &__buttons {
+    button {
+      @media (max-width: 787px) {
+        width: 4.4rem;
+        height: 5rem;
+        padding: $margin-xxs $margin-xs;
+        margin-top: -$margin-xs;
+
+        svg-icon svg {
+          width: 35px;
+          height: 35px;
+        }
+      }
+
+      width: 5.4rem;
+    }
+
+    svg-icon svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}

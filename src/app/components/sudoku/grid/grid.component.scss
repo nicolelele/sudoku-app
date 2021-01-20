@@ -1,0 +1,127 @@
+@import 'src/scss/variables';
+
+:host {
+  margin: 0 auto;
+  background: $grey-dark;
+  border: 1px solid $grey-dark;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-column-gap: 1px;
+  grid-row-gap: 1px;
+  color: $grey-dark;
+}
+
+.app-sudoku-cell {
+  background: $white;
+  position: relative;
+  cursor: pointer;
+
+  &.readonly {
+    color: $grey-dark;
+  }
+
+  &.highlight-row,
+  &.highlight-col,
+  &.highlight-same {
+    background: $grey-highlight;
+  }
+
+  &.active {
+    background: $blue-highlight;
+  }
+
+  &.correct {
+    color: $green;
+  }
+
+  &.incorrect {
+    color: $red;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+    width: 100%;
+  }
+
+  &.top {
+    border-top: 1px solid $grey-dark;
+  }
+
+  &.bottom {
+    border-bottom: 1px solid $grey-dark;
+  }
+
+  &.left {
+    border-left: 1px solid $grey-dark;
+  }
+
+  &.right {
+    border-right: 1px solid $grey-dark;
+  }
+
+  &-value {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $font-regular;
+    font-size: $font-xl;
+  }
+
+  &-notes {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: $font-s;
+    font-family: $font-default;
+    padding: 0 2px;
+    display: flex;
+    line-height: normal;
+  }
+
+  .notes-1,
+  .notes-2,
+  .notes-3 {
+    align-items: flex-start;
+  }
+
+  .notes-4,
+  .notes-5,
+  .notes-6 {
+    align-items: center;
+  }
+
+  .notes-7,
+  .notes-8,
+  .notes-9 {
+    align-items: flex-end;
+  }
+
+  .notes-1,
+  .notes-4,
+  .notes-7 {
+    justify-content: flex-start;
+  }
+
+  .notes-2,
+  .notes-5,
+  .notes-8 {
+    justify-content: center;
+  }
+
+  .notes-3,
+  .notes-6,
+  .notes-9 {
+    justify-content: flex-end;
+  }
+}

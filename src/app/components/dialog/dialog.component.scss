@@ -1,0 +1,130 @@
+@import 'src/scss/variables';
+
+.app-dialog {
+  position: relative;
+  width: 400px;
+  height: 320px;
+  font-family: $font-regular;
+
+  h1,
+  button {
+    font-family: $font-regular;
+  }
+
+  &__tooltip {
+    display: inline;
+
+    svg {
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      top: -5px;
+      margin-left: -4px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    right: -$margin-l;
+    top: -$margin-m;
+    padding: $margin-xs 0;
+    margin: 0;
+
+    :hover,
+    :focus,
+    :active {
+      background-color: transparent;
+    }
+
+    svg-icon svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .mat-dialog-actions {
+    justify-content: center;
+    padding: $margin-xxs 0 0;
+  }
+
+  &__dragdrop {
+    padding: $margin-m;
+
+    &--dropzone {
+      height: 6.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &--text,
+    label {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    label {
+      padding: $margin-xxl 4.3rem;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+  }
+
+  &__files {
+    height: 4rem;
+    padding: 0 $margin-m;
+    overflow-y: auto;
+
+    &-file {
+      position: relative;
+      width: auto;
+      height: 2rem;
+      padding: $margin-xs 0;
+      margin: $margin-xxs 0;
+      border: 2px dashed $grey-menu;
+      border-radius: 5px;
+      transition: .3s ease;
+
+      &::after {
+        content: '';
+        width: 2.5rem;
+        height: 2.5rem;
+        position: absolute;
+        top: $margin-xxs;
+        right: $margin-xxs;
+        display: none;
+        background-color: $red;
+        mask-image: url('/assets/icons/delete.svg');
+        mask-size: contain;
+      }
+
+      &:hover {
+        border: 2px dashed $grey-medium;
+        cursor: pointer;
+
+        &::after {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__upload {
+    display: flex;
+    justify-content: center;
+  }
+}
