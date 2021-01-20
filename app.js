@@ -4,7 +4,6 @@ const port = 3000;
 var fs = require('fs');
 const bodyParser = require('body-parser');
 const multipart = require('connect-multiparty');
-const data = require('./src/uploads/uploadedFile.json');
 
 const multipartMiddleware = multipart({
     uploadDir: './src/uploads'
@@ -15,6 +14,7 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Headers',
       'Origin, X-Requested-With, Content-Type, Accept');
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
   next();
 });
 
@@ -32,7 +32,7 @@ app.post('/api/upload', multipartMiddleware, (req, res) => {
 });
 
 app.get('/api/data', (req, res) => {
-  console.log(data);
+  let data = fs.readFileSync('./src/uploads/uploadedFile.json');
   res.send(data);
 });
 
