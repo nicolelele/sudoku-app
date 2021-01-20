@@ -38,6 +38,8 @@ export class FileDragNDropDirective {
     this.borderStyle = '2px dashed #757B8F';
     const files = e.dataTransfer.files;
     if (files.length > 1) {
+      this.borderStyle = '2px dashed #EA5885';
+      setTimeout(() => this.borderStyle = '2px dashed #757B8F', 150);
       return;
     } else {
       const validFiles: Array<File> = files;
