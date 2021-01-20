@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SudokuCell, Difficulty } from './../models/sudoku.model';
 const { SudokuSolver } = require('@jlguenego/sudoku-generator');
+import { delay } from 'rxjs/operators';
 
 
 @Injectable()
@@ -16,7 +17,8 @@ export class SudokuService {
   constructor(private http: HttpClient) { }
 
   fetchData(): Observable<{}> {
-    return this.http.get('api/data');
+    return this.http.get('api/data').pipe(
+      delay(1000));
   }
 
   generateNewGame(difficulty: Difficulty) {

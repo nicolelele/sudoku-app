@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
   @Input() difficulty: Difficulty = 'easy';
   @ViewChild(SudokuComponent) sudokuComponent: SudokuComponent;
   private timerSubscription: Subscription;
-  private subscription: Subscription;
   stopTimer$ = new Subject();
   startTimer$ = new Subject();
   sudoku: SudokuCell;
@@ -64,27 +63,28 @@ export class AppComponent implements OnInit {
   };
 
   reset(): void {
-    for (let i = 0; i < 9; i++) {
-      const row = this.sudoku[i];
-      for (const field of row) {
-        if (field.clearOnReset) {
-          field.value = undefined;
-          field.notes = undefined;
+    if (this.sudoku) {
+      for (let i = 0; i < 9; i++) {
+        const row = this.sudoku[i];
+        for (const field of row) {
+          if (field.clearOnReset) {
+            field.value = undefined;
+            field.notes = undefined;
+          }
         }
       }
+      this.startTimer();
+      this.sudokuComponent.resetButtons();
     }
-    this.startTimer();
-    if (this.sudokuComponent) this.sudokuComponent.resetButtons();
   }
 
   generateCustom() {
     this.sudoku = undefined;
-    setTimeout(() =>
-      this.sudokuService.fetchData().toPromise()
-        .then(res => {
-          const solution = res;
-          this.sudoku = this.sudokuService.maskGrid(solution, this.difficulty);
-        }), 1000);
+    this.sudokuService.fetchData().toPromise()
+      .then(res => {
+        const solution = res;
+        this.sudoku = this.sudokuService.maskGrid(solution, this.difficulty);
+      });
     this.startTimer();
   }
 }
