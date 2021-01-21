@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -32,7 +32,6 @@ import { FileDragNDropDirective } from './directives/fileDragDrop.directive';
   imports: [
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
     MatDialogModule,
